@@ -22,7 +22,8 @@ def wrangle_telco():
 
     fills in missing values
     replaces missing values from total_charges and convert to float
-    
+    sets customer_id as index
+
     and returns a pandas DataFrame
     '''
 
@@ -42,5 +43,8 @@ def wrangle_telco():
     
     #replace total_charges missing values and convert to float
     df.total_charges = df.total_charges.str.replace(' ', '0').astype(float)
+
+    #set customer_id as index
+    df = df.set_index("customer_id")
 
     return df
